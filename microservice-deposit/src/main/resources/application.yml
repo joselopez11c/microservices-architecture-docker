@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: microservice-deposit
+  kafka:
+    template:
+      default-topic: trasaction-events
+    producer:
+      bootstrap-servers: 192.168.99.100:9092
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    admin:
+      properties:
+        bootstrap:
+          servers: 192.168.99.100:9092
+  datasource:
+    url: jdbc:postgresql://192.168.99.100:5432/db_account
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
+server:
+  port: 8006

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: microservice-security
+  datasource:
+    url: jdbc:mysql://microservicio-mysql8:3306/db_seguridad?serverTimezone=America/Lima&allowPublicKeyRetrieval=true&useSSL=false
+    #url: jdbc:mysql://192.168.99.100:3307/db_seguridad?serverTimezone=America/Lima&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      max-lifetime: 600000
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        ddl-auto: create
+    database: mysql
+
+server:
+  port: 8010
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
